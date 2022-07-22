@@ -1,0 +1,105 @@
+<form style="background-color: cornflowerblue;">
+    <!-- <script type="text/javascript">
+        function employeeForm(frm) {
+            if (frm.First_Name.value == "") { alert('First name is required.'); frm.First_Name.focus(); return false; }
+            if (frm.Last_Name.value == "") { alert('Last name is required.'); frm.Last_Name.focus(); return false; }
+            if (frm.dob.value == "") { alert('Email address is required.'); frm.dob.focus(); return false; }
+            if (frm.dob.value.indexOf("@") < 1 || frm.dob.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.dob.focus(); return false; }
+            if (frm.organization.value == "") { alert('organization is required.'); frm.organization.focus(); return false; }
+            if (frm.Phone.value == "") { alert('Phone is required.'); frm.Phone.focus(); return false; }
+            return true;
+        }
+    </script> -->
+    <table border="0" cellpadding="5" cellspacing="0">
+        <tr>
+
+            <td style="width: 50;" 
+            [ngStyle]="submitted==false ? {'background-color': 'red'}:{'background-color': 'orange'}">
+                <label for="First_Name"><b>First name *</b></label><br />
+                <input name="First_Name" id="First_Name" [(ngModel)]="employeeFormModel.empName" type="text"
+                    maxlength="50" style="width:100%;max-width: 260px" />
+                    <div class ="error" *ngIf="submitted == false;"> Name Required</div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%;background-color: blueviolet;">
+                <label for="address"><b>Address</b></label><br />
+                <input name="address" id="address" [(ngModel)]="employeeFormModel.address" type="text" maxlength="50"
+                    style="width:100%;max-width: 260px" />
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label for="dob"><b>DOB *</b></label><br />
+                <input name="dob" id="dob" type="date" [(ngModel)]="employeeFormModel.dob" maxlength="100"
+                    style="width:100%;max-width: 535px" />
+                    
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label for="gender"><b>Gender</b></label><br />
+                <input type="radio" value="male" name="gender" [(ngModel)]="employeeFormModel.gender" required #genderControl="ngModel"> Male
+                <input type="radio" value="female" name="gender" [(ngModel)]="employeeFormModel.gender" required> Female
+            
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+
+                <label for="organization"><b>Name Of Organization </b></label><br />
+                <input name="organization" type="text" id="organization" [(ngModel)]="employeeFormModel.organization"
+                    maxlength="100" style="width:100%;max-width: 535px" />
+                    <div class="error" *ngIf="submittedDOJ == false;"> organization Required</div>
+                    
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <label for="dateOfJoining"><b>Date Of Joining</b></label><br />
+            <td> <input name="dateOfJoining" type="date" id="dateOfJoining" [(ngModel)]="employeeFormModel.dateOfJoining"
+                    maxlength="50" style="width:100%;max-width: 260px" /> 
+                    <br>      
+            </td>
+            <br>
+            
+            
+
+        </tr>
+
+        <tr>
+            <td>
+                {{ tablename }}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+
+                <br>
+                <br>
+
+
+                <table class="table1">
+                    <tr class="tr1" style="margin-left: 5px;">
+                      <th>ID</th>
+                      <th>name</th>
+                    </tr>
+                    <tr style="margin-left: 5px;" *ngFor="let d of lstSample">
+                      <td> {{ d.id }} </td>
+                      <td> {{ d.name }} </td>
+                    </tr>
+                    
+                  </table>
+                
+
+                <button class="button-85"  type="submit" (click)="Submit()">Submit </button>
+
+                <button class="button-78"  type="submit">Reset </button>
+            </td>
+        </tr>
+    </table>
+</form>
